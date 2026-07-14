@@ -23,7 +23,7 @@ import {
   useToast,
 } from "@/components/ui/toast";
 import { VStack } from "@/components/ui/vstack";
-import { products, sizes } from "@/data";
+import { products } from "@/data";
 
 const Detail = () => {
   const { id } = useLocalSearchParams();
