@@ -6,7 +6,6 @@ import { tva, withStyleContext } from "@gluestack-ui/utils/nativewind-utils";
 import React from "react";
 import type { TextProps, ViewProps } from "react-native";
 import { Platform, Pressable, Text, View } from "react-native";
-import { cssInterop } from "nativewind";
 
 const IndicatorWrapper = React.forwardRef<
   React.ComponentRef<typeof View>,
@@ -42,18 +41,6 @@ const UICheckbox = createCheckbox({
   Indicator: IndicatorWrapper,
 });
 
-cssInterop(UIIcon, {
-  className: {
-    target: "style",
-    nativeStyleToProp: {
-      height: true,
-      width: true,
-      fill: true,
-      color: "classNameColor",
-      stroke: true,
-    } as any,
-  },
-});
 
 const checkboxStyle = tva({
   base: "group/checkbox flex-row items-center justify-start gap-2 web:cursor-pointer data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50",

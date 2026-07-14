@@ -7,12 +7,12 @@ import {
   withStyleContext,
   type VariantProps,
 } from '@gluestack-ui/utils/nativewind-utils';
-import { cssInterop } from 'nativewind';
+
 import React from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 const SCOPE = 'BUTTON';
 const Root = withStyleContext(Pressable, SCOPE);
-cssInterop(UIIcon, { className: { target: "style" } });
+
 const UIButton = createButton({
   Root: Root,
   Text,
