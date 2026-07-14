@@ -7,18 +7,20 @@ import {
   withStyleContext,
   type VariantProps,
 } from '@gluestack-ui/utils/nativewind-utils';
-
+import { styled } from 'nativewind';
 import React from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 const SCOPE = 'BUTTON';
 const Root = withStyleContext(Pressable, SCOPE);
-
+const StyledUIIcon = styled(UIIcon, {
+  className: "style",
+});
 const UIButton = createButton({
   Root: Root,
   Text,
   Group: View,
   Spinner: ActivityIndicator,
-  Icon: UIIcon,
+  Icon: StyledUIIcon,
 });
 const buttonStyle = tva({
   base: 'rounded-md flex-row items-center justify-center data-[focus-visible=true]:web:outline-none data-[focus-visible=true]:web:ring-2 data-[disabled=true]:opacity-40 gap-2 h-fit',
