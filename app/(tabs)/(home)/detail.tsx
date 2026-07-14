@@ -4,6 +4,15 @@ import { ScrollView } from "react-native";
 
 import Cart from "@/components/shop/cart";
 import ViewPager from "@/components/shop/viewpager";
+import {
+  Actionsheet,
+  ActionsheetBackdrop,
+  ActionsheetContent,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+  ActionsheetItem,
+  ActionsheetItemText,
+} from "@/components/ui/actionsheet";
 import { Button, ButtonText } from "@/components/ui/button";
 import {
   Checkbox,
@@ -31,6 +40,9 @@ const Detail = () => {
   const [colors, setColors] = useState([]);
   const [size, setSizes] = useState([]);
   const product = products.find((p) => p.id === +id);
+
+  const [showActionsheet, setShowActionsheet] = useState(false);
+  const handleClose = () => setShowActionsheet(false);
 
   const toast = useToast();
   const [toastId, setToastId] = useState(0);
@@ -156,6 +168,7 @@ const Detail = () => {
             className="mt-6 self-start bg-sky-500"
             onPress={() => {
               if (colors.length > 0 && size.length > 0) {
+                setShowActionsheet(true);
                 return;
               }
               const title = `Must choose ${colors.length === 0 ? "color" : ""}${colors.length === 0 && size.length === 0 ? " - " : ""}${size.length === 0 ? "size" : ""}`;
@@ -167,6 +180,29 @@ const Detail = () => {
           </Button>
         </VStack>
       </ScrollView>
+      <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
+        <ActionsheetBackdrop />
+        <ActionsheetContent>
+          <ActionsheetDragIndicatorWrapper>
+            <ActionsheetDragIndicator />
+          </ActionsheetDragIndicatorWrapper>
+          <ActionsheetItem onPress={handleClose}>
+            <ActionsheetItemText>Edit Message</ActionsheetItemText>
+          </ActionsheetItem>
+          <ActionsheetItem onPress={handleClose}>
+            <ActionsheetItemText>Mark Unread</ActionsheetItemText>
+          </ActionsheetItem>
+          <ActionsheetItem onPress={handleClose}>
+            <ActionsheetItemText>Remind Me</ActionsheetItemText>
+          </ActionsheetItem>
+          <ActionsheetItem onPress={handleClose}>
+            <ActionsheetItemText>Add to Saved Items</ActionsheetItemText>
+          </ActionsheetItem>
+          <ActionsheetItem isDisabled onPress={handleClose}>
+            <ActionsheetItemText>Delete</ActionsheetItemText>
+          </ActionsheetItem>
+        </ActionsheetContent>
+      </Actionsheet>
     </VStack>
   );
 };
