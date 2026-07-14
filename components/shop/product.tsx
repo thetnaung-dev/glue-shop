@@ -28,7 +28,10 @@ const Product = ({
 }: ProductType) => {
   const route = useRouter();
   return (
-    <Pressable className="mx-2" onPress={() => route.navigate("/detail")}>
+    <Pressable
+      className="mx-2"
+      onPress={() => route.navigate({ pathname: "/detail", params: { id } })}
+    >
       <Card className="gap-2 border-0 bg-transparent px-0">
         <Image
           style={{ width: "100%", aspectRatio: 3 / 4, borderRadius: 7 }}

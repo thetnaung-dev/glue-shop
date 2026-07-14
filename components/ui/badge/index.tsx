@@ -2,7 +2,7 @@
 import { PrimitiveIcon, UIIcon } from '@gluestack-ui/core/icon/creator';
 import type { VariantProps } from '@gluestack-ui/utils/nativewind-utils';
 import { tva, useStyleContext, withStyleContext } from '@gluestack-ui/utils/nativewind-utils';
-import { styled } from 'nativewind';
+import { cssInterop } from 'nativewind';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Svg } from 'react-native-svg';
@@ -96,7 +96,7 @@ type IBadgeIconProps = React.ComponentPropsWithoutRef<typeof PrimitiveIcon> &
     size?: number;
 };
   
-const StyledUIIcon = styled(UIIcon, {
+cssInterop(UIIcon, {
   className: {
     target: 'style',
     nativeStyleToProp: {
@@ -118,7 +118,7 @@ const BadgeIcon = React.forwardRef<
 
   if (typeof size === 'number') {
     return (
-      <StyledUIIcon
+      <UIIcon
         ref={ref}
         {...props}
         className={badgeIconStyle({ class: className })}
@@ -130,7 +130,7 @@ const BadgeIcon = React.forwardRef<
     size === undefined
   ) {
     return (
-      <StyledUIIcon
+      <UIIcon
         ref={ref}
         {...props}
         className={badgeIconStyle({ class: className })}
@@ -138,7 +138,7 @@ const BadgeIcon = React.forwardRef<
     );
   }
   return (
-    <StyledUIIcon
+    <UIIcon
       className={badgeIconStyle({
         parentVariants: {
           variant: parentVariant,
