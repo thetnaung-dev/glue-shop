@@ -6,7 +6,7 @@ import { tva, withStyleContext } from "@gluestack-ui/utils/nativewind-utils";
 import React from "react";
 import type { TextProps, ViewProps } from "react-native";
 import { Platform, Pressable, Text, View } from "react-native";
-import { cssInterop } from "react-native-css-interop";
+import { cssInterop } from "nativewind";
 
 const IndicatorWrapper = React.forwardRef<
   React.ComponentRef<typeof View>,
